@@ -61,10 +61,11 @@ CREATE TABLE Regiao
    id             INT IDENTITY,
    cidade         VARCHAR(50)         NOT NULL,
    uf			  CHAR(2)			  NOT NULL,
+   zona           VARCHAR(20)             NULL, -- SUL, NORTE, LESTE, OESTE, CENTRO
    descricao      VARCHAR(200)        NOT NULL,
    statusRegiao   VARCHAR(20)         NOT NULL, -- ATIVO ou INATIVO
 
-   PRIMARY KEY(id),
+   PRIMARY KEY(id)
    )
 
 GO
@@ -93,7 +94,7 @@ CREATE TABLE Prestador
 (
    id                    INT IDENTITY,
    usuario_id            INT,
-   regiao_id             INT,
+   regiao_id             INT, -- apagar
    nome                  VARCHAR(100)       NOT NULL,
    dataNascimento        DATE,
    cpf                   VARCHAR(11)        NOT NULL,
@@ -218,9 +219,27 @@ VALUES (1, 1, 'Salgados', 'Produção de salgadinhos para festas e pronta-entrega'
 SELECT * FROM Servico
 
 
+
+
 ------------------------------------------------------------------------------------------------------
 
--- TABELA FEEDBACK (OPCIONAL)
+-- TABELA FEEDBACK 
+
+CREATE TABLE Feedback
+
+(
+   id                   INT IDENTITY,
+   usuario_id           INT,
+   prestador_id         INT,
+   descricao            VARCHAR(200)        NOT NULL,
+   dataCadastro	        SMALLDATETIME	NOT NULL,
+   statusFeedback		VARCHAR(20), --ATIVO OU INATIVO
+
+
+   PRIMARY KEY (id),
+   FOREIGN KEY (usuario_id)  REFERENCES Usuario(id),
+   FOREIGN KEY (prestador_id) REFERENCES Prestador(id)
+)
 
 
  -- SELECTS
@@ -230,6 +249,8 @@ SELECT * FROM Servico
  SELECT * FROM Contato
  SELECT * FROM Categoria
  SELECT * FROM Servico
+ SELECT * FROM Feedback
+
 
 
 
@@ -240,5 +261,7 @@ DROP TABLE Prestador
 DROP TABLE Contato
 DROP TABLE Categoria
 DROP TABLE Servico
+DROP TABLE Feedback
+
 
 
