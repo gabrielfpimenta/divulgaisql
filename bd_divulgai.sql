@@ -71,14 +71,14 @@ CREATE TABLE Regiao
 GO
 
 
-INSERT Regiao (cidade, uf, descricao, statusRegiao)
-VALUES ('Barueri', 'SP', 'Atende toda a região do Engenho Novo e proximidades', 'ATIVO')
-INSERT Regiao (cidade, uf, descricao, statusRegiao)
-VALUES ('Osasco', 'SP', 'Atende toda a região central de Osasco e bairros adjacentes', 'ATIVO');
-INSERT Regiao (cidade, uf, descricao, statusRegiao)
-VALUES ('Carapicuíba', 'SP', 'Atende bairros como Vila Dirce, Ariston e Centro', 'ATIVO')
-INSERT Regiao (cidade, uf, descricao, statusRegiao)
-VALUES ('Santana de Parnaíba', 'SP', 'Atende bairros históricos e condomínios residenciais', 'ATIVO')
+INSERT Regiao (cidade, uf, zona, descricao, statusRegiao)
+VALUES ('Barueri', 'SP', 'ZONA LESTE', 'Atende toda a região do Engenho Novo e proximidades', 'ATIVO')
+INSERT Regiao (cidade, uf, zona, descricao, statusRegiao)
+VALUES ('Osasco', 'SP', 'ZONA LESTE', 'Atende toda a região central de Osasco e bairros adjacentes', 'ATIVO');
+INSERT Regiao (cidade, uf, zona, descricao, statusRegiao)
+VALUES ('Carapicuíba', 'SP', 'ZONA LESTE',  'Atende bairros como Vila Dirce, Ariston e Centro', 'ATIVO')
+INSERT Regiao (cidade, uf, zona, descricao, statusRegiao)
+VALUES ('Santana de Parnaíba', 'SP', 'ZONA LESTE',  'Atende bairros históricos e condomínios residenciais', 'ATIVO')
 
 SELECT * FROM Regiao
 
@@ -165,7 +165,7 @@ CREATE TABLE Categoria
    descricao             VARCHAR(200)        NOT NULL,
    status_categoria       VARCHAR(20)        NOT NULL,
 
-   PRIMARY KEY(id),
+   PRIMARY KEY(id)
 )
 
 GO
@@ -241,6 +241,8 @@ CREATE TABLE Feedback
    FOREIGN KEY (prestador_id) REFERENCES Prestador(id)
 )
 
+INSERT Feedback (usuario_id, prestador_id, descricao, dataCadastro, statusFeedback)
+VALUES (4, 1, 'O serviço Sicrana Estética é muito bom e acolhedor, parabéns.', GETDATE(), 'ATIVO')
 
  -- SELECTS
  SELECT * FROM Usuario
