@@ -242,7 +242,7 @@ CREATE TABLE Feedback
 )
 
 INSERT Feedback (usuario_id, prestador_id, descricao, dataCadastro, statusFeedback)
-VALUES (4, 1, 'O serviço Sicrana Estética é muito bom e acolhedor, parabéns.', GETDATE(), 'ATIVO')
+VALUES (4, 1, 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', GETDATE(), 'ATIVO')
 
  -- SELECTS
  SELECT * FROM Usuario
