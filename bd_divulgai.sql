@@ -42,14 +42,14 @@ GO
 INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
 VALUES ('Fulano da Silva', 'fulano@email.com.br', 'MTIzNDU2Nzg=', 'ADMIN', NULL, GETDATE(), 'ATIVO')
 INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
-VALUES ('Beltrana de Sá', 'beltrana@email.com.br', 'MTIzNDU2Nzg=', 'USER', NULL, GETDATE(), 'INATIVO')
+VALUES ('Beltrana de Sá', 'beltrana@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', NULL, GETDATE(), 'INATIVO')
 INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
 VALUES ('Sicrana de Oliveira', 'sicrana@email.com.br', 'MTIzNDU2Nzg=', 'PRESTADOR', NULL, GETDATE(), 'ATIVO')
 INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
-VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'USER', NULL, GETDATE(), 'ATIVO')
+VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', NULL, GETDATE(), 'ATIVO')
 GO
 
--- As tabelas são baseadas nos 4 usuários do sistema, sendo eles: 2 clientes (users), 1 administrador (admin) e 1 prestador
+-- As tabelas são baseadas nos 4 usuários do sistema, sendo eles: 2 clientes, 1 administrador (admin) e 1 prestador
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -110,7 +110,7 @@ CREATE TABLE Prestador
 
 
    PRIMARY KEY(id),
-   FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
+   FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
 )
 
 GO
@@ -190,7 +190,7 @@ CREATE TABLE Servico
    prestador_id         INT,
    nome                 VARCHAR(100)        NOT NULL,
    descricao            VARCHAR(200)        NOT NULL,
-   status_servico		VARCHAR(20), --ATIVO OU INATIVO
+   statusServico		VARCHAR(20), --ATIVO OU INATIVO
    foto		         	VARBINARY(MAX)          NULL,
 
    PRIMARY KEY (id),
@@ -201,16 +201,16 @@ CREATE TABLE Servico
 
 GO
 
-INSERT Servico (categoria_id, prestador_id, nome, descricao, status_servico, foto)
+INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
 VALUES (1, 1, 'Confeitaria', 'Produção e venda de bolos, doces e confeitos artesanais', 'ATIVO', NULL)
 
-INSERT Servico (categoria_id, prestador_id, nome, descricao, status_servico, foto)
+INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
 VALUES (1, 1, 'Marmitaria', 'Preparação e entrega de marmitas caseiras e saudáveis', 'INATIVO', NULL)
 
-INSERT Servico (categoria_id, prestador_id, nome, descricao, status_servico, foto)
+INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
 VALUES (1, 1, 'Buffet', 'Serviços de alimentação para festas e eventos', 'INATIVO', NULL)
 
-INSERT Servico (categoria_id, prestador_id, nome, descricao, status_servico, foto)
+INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
 VALUES (1, 1, 'Salgados', 'Produção de salgadinhos para festas e pronta-entrega', 'INATIVO', NULL)
 
 
