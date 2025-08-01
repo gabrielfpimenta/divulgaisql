@@ -46,7 +46,7 @@ VALUES ('Beltrana de Sá', 'beltrana@email.com.br', 'MTIzNDU2Nzg=', 'USER', NULL,
 INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
 VALUES ('Sicrana de Oliveira', 'sicrana@email.com.br', 'MTIzNDU2Nzg=', 'PRESTADOR', NULL, GETDATE(), 'ATIVO')
 INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
-VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'USER', NULL, GETDATE(), 'TROCAR_SENHA')
+VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'USER', NULL, GETDATE(), 'ATIVO')
 GO
 
 -- As tabelas são baseadas nos 4 usuários do sistema, sendo eles: 2 clientes (users), 1 administrador (admin) e 1 prestador
