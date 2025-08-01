@@ -94,7 +94,6 @@ CREATE TABLE Prestador
 (
    id                    INT IDENTITY,
    usuario_id            INT,
-   regiao_id             INT, -- apagar
    nome                  VARCHAR(100)       NOT NULL,
    dataNascimento        DATE,
    cpf                   VARCHAR(11)        NOT NULL,
@@ -112,13 +111,12 @@ CREATE TABLE Prestador
 
    PRIMARY KEY(id),
    FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
-   FOREIGN KEY (regiao_id)  REFERENCES  Regiao(id),
 )
 
 GO
 
-INSERT Prestador (usuario_id, regiao_id, nome, dataNascimento, cpf, genero, telefone, logradouro, numeroResidencial, complemento, cep, bairro, cidade, uf, statusPrestador)
-VALUES (3, 1, 'Sicrana Bolos', GETDATE(), '12345678910', 'Feminino', '11940028922', 'Rua Lorena', '13', 'Casa 1', '01234567', 'Engenho Novo', 'Barueri', 'SP', 'ATIVO')
+INSERT Prestador (usuario_id, nome, dataNascimento, cpf, genero, telefone, logradouro, numeroResidencial, complemento, cep, bairro, cidade, uf, statusPrestador)
+VALUES (3, 'Sicrana Bolos', GETDATE(), '12345678910', 'Feminino', '11940028922', 'Rua Lorena', '13', 'Casa 1', '01234567', 'Engenho Novo', 'Barueri', 'SP', 'ATIVO')
 
 SELECT * FROM Prestador
 
