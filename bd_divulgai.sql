@@ -190,7 +190,7 @@ CREATE TABLE Servico
    prestador_id         INT,
    nome                 VARCHAR(100)        NOT NULL,
    descricao            VARCHAR(200)        NOT NULL,
-   statusServico		VARCHAR(20), --ATIVO OU INATIVO
+   statusServico		VARCHAR(20)			NOT NULL, --ATIVO OU INATIVO
    foto		         	VARBINARY(MAX)          NULL,
 
    PRIMARY KEY (id),
