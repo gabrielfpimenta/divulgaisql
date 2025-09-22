@@ -23,31 +23,32 @@ GO
 -- TABELA USUARIO
 
 CREATE TABLE Usuario
-
 (
-   id            INT			IDENTITY,
-   nome          VARCHAR(100)	NOT NULL,
-   email         VARCHAR(100)	UNIQUE NOT NULL,
-   senha         VARCHAR(100)	NOT NULL,
-   nivelAcesso   VARCHAR(10)    NULL, -- ADMIN, PRESTADOR ou CLIENTE
-   foto			 VARBINARY(MAX) NULL,
-   dataCadastro	 SMALLDATETIME	NOT NULL,
-   statusUsuario VARCHAR(20)    NOT NULL, -- ATIVO ou INATIVO ou TROCAR_SENHA
-
-   PRIMARY KEY (id)
+   id            INT IDENTITY PRIMARY KEY,
+   nome          VARCHAR(100) NOT NULL,
+   email         VARCHAR(100) UNIQUE NOT NULL,
+   senha         VARCHAR(100) NOT NULL,
+   nivel_acesso  VARCHAR(10) NULL, -- ADMIN, PRESTADOR ou CLIENTE
+   foto          VARBINARY(MAX) NULL,
+   data_cadastro SMALLDATETIME NOT NULL,
+   status_usuario BIT NOT NULL  -- 0 = Inativo, 1 = Ativo
 )
-
 GO
 
-INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
-VALUES ('Fulano da Silva', 'fulano@email.com.br', 'MTIzNDU2Nzg=', 'ADMIN', NULL, GETDATE(), 'ATIVO')
-INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
-VALUES ('Beltrana de Sá', 'beltrana@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', NULL, GETDATE(), 'INATIVO')
-INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
-VALUES ('Sicrana de Oliveira', 'sicrana@email.com.br', 'MTIzNDU2Nzg=', 'PRESTADOR', NULL, GETDATE(), 'ATIVO')
-INSERT Usuario (nome, email, senha, nivelAcesso, foto, dataCadastro, statusUsuario)
-VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', NULL, GETDATE(), 'ATIVO')
+-- Ajustando inserts para status_usuario como BIT (0 ou 1)
+INSERT Usuario (nome, email, senha, nivel_acesso, foto, data_cadastro, status_usuario)
+VALUES ('Fulano da Silva', 'fulano@email.com.br', 'MTIzNDU2Nzg=', 'ADMIN', NULL, GETDATE(), 1)
+
+INSERT Usuario (nome, email, senha, nivel_acesso, foto, data_cadastro, status_usuario)
+VALUES ('Beltrana de Sá', 'beltrana@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', NULL, GETDATE(), 0)
+
+INSERT Usuario (nome, email, senha, nivel_acesso, foto, data_cadastro, status_usuario)
+VALUES ('Sicrana de Oliveira', 'sicrana@email.com.br', 'MTIzNDU2Nzg=', 'PRESTADOR', NULL, GETDATE(), 1)
+
+INSERT Usuario (nome, email, senha, nivel_acesso, foto, data_cadastro, status_usuario)
+VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', NULL, GETDATE(), 1)
 GO
+
 
 -- As tabelas são baseadas nos 4 usuários do sistema, sendo eles: 2 clientes, 1 administrador (admin) e 1 prestador
 
@@ -262,6 +263,4 @@ DROP TABLE Contato
 DROP TABLE Categoria
 DROP TABLE Servico
 DROP TABLE Feedback
-
-
 
