@@ -31,8 +31,7 @@ CREATE TABLE Usuario
    nivel_acesso  VARCHAR(10) NULL, -- ADMIN, PRESTADOR ou CLIENTE
    foto          VARBINARY(MAX) NULL,
    data_cadastro SMALLDATETIME NOT NULL,
-   status_usuario BIT NOT NULL  -- 0 = Inativo, 1 = Ativo
-)
+ )
 GO
 
 -- Ajustando inserts para status_usuario como BIT (0 ou 1)
@@ -161,7 +160,6 @@ CREATE TABLE Categoria
 (
    id                    INT IDENTITY,
    nome                  VARCHAR(100)        NOT NULL,
-   descricao             VARCHAR(200)        NOT NULL,
    status_categoria       VARCHAR(20)        NOT NULL,
 
    PRIMARY KEY(id)
@@ -169,8 +167,20 @@ CREATE TABLE Categoria
 
 GO
 
-INSERT Categoria (nome, descricao, status_categoria)
-VALUES ('Alimentação', 'Serviços relacionados à produção, preparo e venda de alimentos, como marmitas, doces, bolos e catering.', 'ATIVO')
+INSERT Categoria (nome, status_categoria)
+VALUES ('Confeitaria', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Marmitaria', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Buffet', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Salgados', 'ATIVO')
 
 SELECT * FROM Categoria
 
@@ -190,7 +200,6 @@ CREATE TABLE Servico
    categoria_id         INT,
    prestador_id         INT,
    nome                 VARCHAR(100)        NOT NULL,
-   descricao            VARCHAR(200)        NOT NULL,
    statusServico		VARCHAR(20)			NOT NULL, --ATIVO OU INATIVO
    foto		         	VARBINARY(MAX)          NULL,
 
@@ -202,17 +211,17 @@ CREATE TABLE Servico
 
 GO
 
-INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
-VALUES (1, 1, 'Confeitaria', 'Produção e venda de bolos, doces e confeitos artesanais', 'ATIVO', NULL)
+INSERT Servico (categoria_id, prestador_id, nome, statusServico, foto)
+VALUES (1, 1, 'Confeitaria', 'ATIVO', NULL)
 
 INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
-VALUES (1, 1, 'Marmitaria', 'Preparação e entrega de marmitas caseiras e saudáveis', 'INATIVO', NULL)
+VALUES (1, 1, 'Marmitaria', 'INATIVO', NULL)
 
 INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
-VALUES (1, 1, 'Buffet', 'Serviços de alimentação para festas e eventos', 'INATIVO', NULL)
+VALUES (1, 1, 'Buffet', 'INATIVO', NULL)
 
 INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
-VALUES (1, 1, 'Salgados', 'Produção de salgadinhos para festas e pronta-entrega', 'INATIVO', NULL)
+VALUES (1, 1, 'Salgados', 'INATIVO', NULL)
 
 
 SELECT * FROM Servico
