@@ -164,7 +164,7 @@ CREATE TABLE Categoria
 (
    id                    INT IDENTITY,
    nome                  VARCHAR(100)        NOT NULL,
-   status_categoria       VARCHAR(20)        NOT NULL,
+   status_categoria      BIT                 NOT NULL -- 1 = Ativo, 0 = Inativo
 
    PRIMARY KEY(id)
 )
@@ -173,59 +173,59 @@ GO
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Comidas prontas', 'ATIVO')
+VALUES ('Comidas prontas', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Lanches e Fast Food', 'ATIVO')
+VALUES ('Lanches e Fast Food', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Doces e Sobremesas', 'ATIVO')
+VALUES ('Doces e Sobremesas', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Padaria e Confeitaria', 'ATIVO')
+VALUES ('Padaria e Confeitaria', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Sucos naturais', 'ATIVO')
+VALUES ('Sucos naturais', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Drinks artesanais', 'ATIVO')
+VALUES ('Drinks artesanais', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Cafés e chás especiais', 'ATIVO')
+VALUES ('Cafés e chás especiais', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Saudável e fitness', 'ATIVO')
+VALUES ('Saudável e fitness', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Comida italiana', 'ATIVO')
+VALUES ('Comida italiana', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Comida japonesa', 'ATIVO')
+VALUES ('Comida japonesa', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Comida nordestina', 'ATIVO')
+VALUES ('Comida nordestina', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Comida árabe', 'ATIVO')
+VALUES ('Comida árabe', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Comida mexicana', 'ATIVO')
+VALUES ('Comida mexicana', 1)
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Buffet para festas', 'ATIVO')
+VALUES ('Buffet para festas', 1)
 
 SELECT * FROM Categoria
 
