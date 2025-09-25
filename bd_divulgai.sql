@@ -120,7 +120,7 @@ CREATE TABLE Prestador
 GO
 
 INSERT Prestador (usuario_id, nome, dataNascimento, cpf, genero, telefone, logradouro, numeroResidencial, complemento, cep, bairro, cidade, uf, statusPrestador)
-VALUES (3, 'Sicrana Bolos', GETDATE(), '12345678910', 'Feminino', '11940028922', 'Rua Lorena', '13', 'Casa 1', '01234567', 'Engenho Novo', 'Barueri', 'SP', 'ATIVO')
+VALUES (3, 'Sicrana de Oliveira', GETDATE(), '12345678910', 'Feminino', '11940028922', 'Rua Lorena', '13', 'Casa 1', '01234567', 'Engenho Novo', 'Barueri', 'SP', 'ATIVO')
 
 SELECT * FROM Prestador
 
@@ -171,20 +171,61 @@ CREATE TABLE Categoria
 
 GO
 
-INSERT Categoria (nome, status_categoria)
-VALUES ('Confeitaria', 'ATIVO')
-
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Marmitaria', 'ATIVO')
+VALUES ('Comidas prontas', 'ATIVO')
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Buffet', 'ATIVO')
+VALUES ('Lanches e Fast Food', 'ATIVO')
 
 
 INSERT Categoria (nome, status_categoria)
-VALUES ('Salgados', 'ATIVO')
+VALUES ('Doces e Sobremesas', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Padaria e Confeitaria', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Sucos naturais', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Drinks artesanais', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Cafés e chás especiais', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Saudável e fitness', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Comida italiana', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Comida japonesa', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Comida nordestina', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Comida árabe', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Comida mexicana', 'ATIVO')
+
+
+INSERT Categoria (nome, status_categoria)
+VALUES ('Buffet para festas', 'ATIVO')
 
 SELECT * FROM Categoria
 
@@ -216,16 +257,7 @@ CREATE TABLE Servico
 GO
 
 INSERT Servico (categoria_id, prestador_id, nome, statusServico, foto)
-VALUES (1, 1, 'Confeitaria', 'ATIVO', NULL)
-
-INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
-VALUES (1, 1, 'Marmitaria', 'INATIVO', NULL)
-
-INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
-VALUES (1, 1, 'Buffet', 'INATIVO', NULL)
-
-INSERT Servico (categoria_id, prestador_id, nome, descricao, statusServico, foto)
-VALUES (1, 1, 'Salgados', 'INATIVO', NULL)
+VALUES (3, 1, 'Sicrana Bolos', 'ATIVO', NULL)
 
 
 SELECT * FROM Servico
