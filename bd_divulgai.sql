@@ -31,6 +31,8 @@ CREATE TABLE Usuario
    nivel_acesso  VARCHAR(10) NULL, -- ADMIN, PRESTADOR ou CLIENTE
    foto          VARBINARY(MAX) NULL,
    data_cadastro SMALLDATETIME NOT NULL,
+   status_usuario BIT NOT NULL -- 1 = Ativo, 0 = Inativo
+
  )
 GO
 
@@ -47,6 +49,8 @@ VALUES ('Sicrana de Oliveira', 'sicrana@email.com.br', 'MTIzNDU2Nzg=', 'PRESTADO
 INSERT Usuario (nome, email, senha, nivel_acesso, foto, data_cadastro, status_usuario)
 VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', NULL, GETDATE(), 1)
 GO
+
+SELECT * FROM Usuario
 
 
 -- As tabelas são baseadas nos 4 usuários do sistema, sendo eles: 2 clientes, 1 administrador (admin) e 1 prestador
