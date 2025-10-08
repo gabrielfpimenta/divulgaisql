@@ -1,21 +1,14 @@
-USE master 
-IF EXISTS(select * from sys.databases where name='bd_divulgai')
+-- USE master 
+-- IF EXISTS(select * from sys.databases where name='bd_divulgai')
+-- DROP DATABASE bd_divulgai
+-- GO
 
-DROP DATABASE bd_divulgai
+-- CREATE DATABASE bd_divulgai
+-- GO
 
-GO
+-- USE bd_divulgai
+-- GO
 
--- CRIAR UM BANCO DE DADOS
-
-CREATE DATABASE bd_divulgai
-
-GO
-
--- ACESSAR O BANCO DE DADOS
-
-USE bd_divulgai
-
-GO
 
 
 -----------------------------------------------------------------------------------
