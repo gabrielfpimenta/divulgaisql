@@ -301,6 +301,7 @@ VALUES (4, 1, 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', GETD
 
 
 -- DROPS
+/*
 DROP TABLE Usuario
 DROP TABLE Regiao
 DROP TABLE Prestador
@@ -308,4 +309,6 @@ DROP TABLE Contato
 DROP TABLE Categoria
 DROP TABLE Servico
 DROP TABLE Feedback
+*/
+
 
