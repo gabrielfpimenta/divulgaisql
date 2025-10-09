@@ -61,7 +61,7 @@ CREATE TABLE Regiao
    uf			  CHAR(2)			  NOT NULL,
    zona           VARCHAR(20)             NULL, -- SUL, NORTE, LESTE, OESTE, CENTRO
    descricao      VARCHAR(200)        NOT NULL,
-   statusRegiao   VARCHAR(20)         NOT NULL, -- ATIVO ou INATIVO
+   status_regiao   VARCHAR(20)         NOT NULL, -- ATIVO ou INATIVO
 
    PRIMARY KEY(id)
    )
@@ -69,13 +69,13 @@ CREATE TABLE Regiao
 GO
 
 
-INSERT Regiao (cidade, uf, zona, descricao, statusRegiao)
+INSERT Regiao (cidade, uf, zona, descricao, status_regiao)
 VALUES ('Barueri', 'SP', 'ZONA LESTE', 'Atende toda a região do Engenho Novo e proximidades', 'ATIVO')
-INSERT Regiao (cidade, uf, zona, descricao, statusRegiao)
+INSERT Regiao (cidade, uf, zona, descricao, status_regiao)
 VALUES ('Osasco', 'SP', 'ZONA LESTE', 'Atende toda a região central de Osasco e bairros adjacentes', 'ATIVO');
-INSERT Regiao (cidade, uf, zona, descricao, statusRegiao)
+INSERT Regiao (cidade, uf, zona, descricao, status_regiao)
 VALUES ('Carapicuíba', 'SP', 'ZONA LESTE',  'Atende bairros como Vila Dirce, Ariston e Centro', 'ATIVO')
-INSERT Regiao (cidade, uf, zona, descricao, statusRegiao)
+INSERT Regiao (cidade, uf, zona, descricao, status_regiao)
 VALUES ('Santana de Parnaíba', 'SP', 'ZONA LESTE',  'Atende bairros históricos e condomínios residenciais', 'ATIVO')
 
 SELECT * FROM Regiao
@@ -93,18 +93,18 @@ CREATE TABLE Prestador
    id                    INT IDENTITY,
    usuario_id            INT,
    nome                  VARCHAR(100)       NOT NULL,
-   dataNascimento        DATE,
+   data_nascimento        DATE,
    cpf                   VARCHAR(11)        NOT NULL,
    genero                VARCHAR(20)        NOT NULL,
    telefone              VARCHAR(11)        NOT NULL,
    logradouro 	 	     VARCHAR(100)       NOT NULL, -- nome da rua, avenida e etc
-   numeroResidencial 	 VARCHAR(10)        NOT NULL,
+   numero_residencial 	 VARCHAR(10)        NOT NULL,
    complemento  	     VARCHAR(100)       NULL,
    cep 	 	             CHAR(8)            NOT NULL,
    bairro  	 	         VARCHAR(100)       NOT NULL,
    cidade 	 	         VARCHAR(100)       NOT NULL,
    uf 		 	         CHAR(2)            NOT NULL,
-   statusPrestador       VARCHAR(20)        NOT NULL, -- ATIVO, INATIVO, SUSPENSO
+   status_prestador       VARCHAR(20)        NOT NULL, -- ATIVO, INATIVO, SUSPENSO
 
 
    PRIMARY KEY(id),
@@ -113,7 +113,7 @@ CREATE TABLE Prestador
 
 GO
 
-INSERT Prestador (usuario_id, nome, dataNascimento, cpf, genero, telefone, logradouro, numeroResidencial, complemento, cep, bairro, cidade, uf, statusPrestador)
+INSERT Prestador (usuario_id, nome, data_nascimento, cpf, genero, telefone, logradouro, numero_residencial, complemento, cep, bairro, cidade, uf, status_prestador)
 VALUES (3, 'Sicrana de Oliveira', GETDATE(), '12345678910', 'Feminino', '11940028922', 'Rua Lorena', '13', 'Casa 1', '01234567', 'Engenho Novo', 'Barueri', 'SP', 'ATIVO')
 
 SELECT * FROM Prestador
@@ -239,7 +239,7 @@ CREATE TABLE Servico
    categoria_id         INT,
    prestador_id         INT,
    nome                 VARCHAR(100)        NOT NULL,
-   statusServico		VARCHAR(20)			NOT NULL, --ATIVO OU INATIVO
+   status_servico		VARCHAR(20)			NOT NULL, --ATIVO OU INATIVO
    foto		         	VARBINARY(MAX)          NULL,
 
    PRIMARY KEY (id),
@@ -250,7 +250,7 @@ CREATE TABLE Servico
 
 GO
 
-INSERT Servico (categoria_id, prestador_id, nome, statusServico, foto)
+INSERT Servico (categoria_id, prestador_id, nome, status_servico, foto)
 VALUES (3, 1, 'Sicrana Bolos', 'ATIVO', NULL)
 
 
@@ -270,8 +270,8 @@ CREATE TABLE Feedback
    usuario_id           INT,
    prestador_id         INT,
    descricao            VARCHAR(200)        NOT NULL,
-   dataCadastro	        SMALLDATETIME	NOT NULL,
-   statusFeedback		VARCHAR(20), --ATIVO OU INATIVO
+   data_cadastro	        SMALLDATETIME	NOT NULL,
+   status_feedback		VARCHAR(20), --ATIVO OU INATIVO
 
 
    PRIMARY KEY (id),
@@ -279,7 +279,7 @@ CREATE TABLE Feedback
    FOREIGN KEY (prestador_id) REFERENCES Prestador(id)
 )
 
-INSERT Feedback (usuario_id, prestador_id, descricao, dataCadastro, statusFeedback)
+INSERT Feedback (usuario_id, prestador_id, descricao, data_cadastro, status_feedback)
 VALUES (4, 1, 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', GETDATE(), 'ATIVO')
 
  -- SELECTS
