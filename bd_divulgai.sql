@@ -275,6 +275,7 @@ CREATE TABLE Feedback
    prestador_id         INT,
    titulo               VARCHAR(200)        NOT NULL,
    descricao            VARCHAR(200)        NOT NULL,
+   tipo                 VARCHAR(50)         NOT NULL, --DENÚNCIA ou FEEDBACK
    data_cadastro	    SMALLDATETIME	NOT NULL,
    status_feedback		VARCHAR(20), --ATIVO OU INATIVO
 
@@ -284,8 +285,8 @@ CREATE TABLE Feedback
    FOREIGN KEY (prestador_id) REFERENCES Prestador(id)
 )
 
-INSERT Feedback (usuario_id, prestador_id, titulo, descricao, data_cadastro, status_feedback)
-VALUES (4, 1, 'Um serviço excelente!' , 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', GETDATE(), 'ATIVO')
+INSERT Feedback (usuario_id, prestador_id, titulo, descricao, tipo, data_cadastro, status_feedback)
+VALUES (4, 1, 'Um serviço excelente!' , 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', 'FEEDBACK', GETDATE(), 'ATIVO')
 
  -- SELECTS
  SELECT * FROM Usuario
