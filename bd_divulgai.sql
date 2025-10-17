@@ -92,6 +92,7 @@ CREATE TABLE Prestador
 (
    id                    INT IDENTITY,
    usuario_id            INT,
+   regiao_id             INT,
    nome                  VARCHAR(100)       NOT NULL,
    data_nascimento        DATE,
    cpf                   VARCHAR(11)        NOT NULL,
@@ -108,13 +109,15 @@ CREATE TABLE Prestador
 
 
    PRIMARY KEY(id),
-   FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+   FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
+   FOREIGN KEY (regiao_id) REFERENCES Regiao(id)
+
 )
 
 GO
 
-INSERT Prestador (usuario_id, nome, data_nascimento, cpf, genero, telefone, logradouro, numero_residencial, complemento, cep, bairro, cidade, uf, status_prestador)
-VALUES (3, 'Sicrana de Oliveira', GETDATE(), '12345678910', 'Feminino', '11940028922', 'Rua Lorena', '13', 'Casa 1', '01234567', 'Engenho Novo', 'Barueri', 'SP', 'ATIVO')
+INSERT Prestador (usuario_id, regiao_id, nome, data_nascimento, cpf, genero, telefone, logradouro, numero_residencial, complemento, cep, bairro, cidade, uf, status_prestador)
+VALUES (3, 1, 'Sicrana de Oliveira', GETDATE(), '12345678910', 'Feminino', '11940028922', 'Rua Lorena', '13', 'Casa 1', '01234567', 'Engenho Novo', 'Barueri', 'SP', 'ATIVO')
 
 SELECT * FROM Prestador
 
@@ -239,6 +242,7 @@ CREATE TABLE Servico
    categoria_id         INT,
    prestador_id         INT,
    nome                 VARCHAR(100)        NOT NULL,
+   descricao            VARCHAR(200)        NOT NULL,
    status_servico		VARCHAR(20)			NOT NULL, --ATIVO OU INATIVO
    foto		         	VARBINARY(MAX)          NULL,
 
@@ -250,8 +254,8 @@ CREATE TABLE Servico
 
 GO
 
-INSERT Servico (categoria_id, prestador_id, nome, status_servico, foto)
-VALUES (3, 1, 'Sicrana Bolos', 'ATIVO', NULL)
+INSERT Servico (categoria_id, prestador_id, nome, descricao, status_servico, foto)
+VALUES (3, 1, 'Sicrana Bolos', 'O Sicrana Bolos vende bolos variados.', 'ATIVO', NULL)
 
 
 SELECT * FROM Servico
@@ -269,8 +273,9 @@ CREATE TABLE Feedback
    id                   INT IDENTITY,
    usuario_id           INT,
    prestador_id         INT,
+   titulo               VARCHAR(200)        NOT NULL,
    descricao            VARCHAR(200)        NOT NULL,
-   data_cadastro	        SMALLDATETIME	NOT NULL,
+   data_cadastro	    SMALLDATETIME	NOT NULL,
    status_feedback		VARCHAR(20), --ATIVO OU INATIVO
 
 
@@ -279,8 +284,8 @@ CREATE TABLE Feedback
    FOREIGN KEY (prestador_id) REFERENCES Prestador(id)
 )
 
-INSERT Feedback (usuario_id, prestador_id, descricao, data_cadastro, status_feedback)
-VALUES (4, 1, 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', GETDATE(), 'ATIVO')
+INSERT Feedback (usuario_id, prestador_id, titulo, descricao, data_cadastro, status_feedback)
+VALUES (4, 1, 'Um serviço excelente!' , 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', GETDATE(), 'ATIVO')
 
  -- SELECTS
  SELECT * FROM Usuario
