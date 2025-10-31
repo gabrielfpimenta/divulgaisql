@@ -288,6 +288,8 @@ CREATE TABLE Feedback
 INSERT Feedback (usuario_id, prestador_id, titulo, descricao, tipo, data_cadastro, status_feedback)
 VALUES (4, 1, 'Um serviço excelente!' , 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', 'FEEDBACK', GETDATE(), 'ATIVO')
 
+ SELECT * FROM Feedback
+
  -- SELECTS
  SELECT * FROM Usuario
  SELECT * FROM Regiao 
