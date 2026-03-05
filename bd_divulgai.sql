@@ -3,7 +3,7 @@
 -- DROP DATABASE bd_divulgai
 -- GO
 
--- CREATE DATABASE bd_divulgai
+-- CREATE DATABASE divulgaisomee
 -- GO
 
 -- USE bd_divulgai
@@ -14,14 +14,14 @@ USE divulgaisomee
 -- TABELA USUARIO
 
 CREATE TABLE Usuario (
-    id INT IDENTITY PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    senha VARCHAR(100) NOT NULL,
-    nivel_acesso VARCHAR(10) NULL, -- ADMIN, PRESTADOR ou CLIENTE
-    foto VARBINARY(MAX) NULL,
-    data_cadastro SMALLDATETIME NOT NULL,
-    status_usuario BIT NOT NULL -- 1 = Ativo, 0 = Inativo
+    id             INT IDENTITY PRIMARY KEY,
+    nome           VARCHAR(100)        NOT NULL,
+    email          VARCHAR(100) UNIQUE NOT NULL,
+    senha          VARCHAR(100)        NOT NULL,
+    nivel_acesso   VARCHAR(10)             NULL, -- ADMIN, PRESTADOR ou CLIENTE
+    foto           VARBINARY(MAX)          NULL,
+    data_cadastro  SMALLDATETIME       NOT NULL,
+    status_usuario BIT                 NOT NULL -- 1 = Ativo, 0 = Inativo
 )
 GO
 
@@ -44,12 +44,12 @@ SELECT * FROM Usuario
 
 -- TABELA REGIAO
 CREATE TABLE Regiao (
-    id INT IDENTITY,
-    cidade VARCHAR(50) NOT NULL,
-    uf CHAR(2) NOT NULL,
-    zona VARCHAR(20) NULL, -- SUL, NORTE, LESTE, OESTE, CENTRO
-    descricao VARCHAR(200) NOT NULL,
-    status_regiao VARCHAR(20) NOT NULL, -- ATIVO ou INATIVO
+    id            INT IDENTITY,
+    cidade        VARCHAR(50)   NOT NULL,
+    uf            CHAR(2)       NOT NULL,
+    zona          VARCHAR(20)       NULL, -- SUL, NORTE, LESTE, OESTE, CENTRO
+    descricao     VARCHAR(200)  NOT NULL,
+    status_regiao VARCHAR(20)   NOT NULL, -- ATIVO ou INATIVO
     PRIMARY KEY(id)
 )
 GO
@@ -70,22 +70,22 @@ SELECT * FROM Regiao
 
 -- TABELA PRESTADOR
 CREATE TABLE Prestador (
-    id INT IDENTITY,
-    usuario_id INT,
-    regiao_id INT,
-    nome VARCHAR(100) NOT NULL,
-    data_nascimento DATE,
-    cpf VARCHAR(11) NOT NULL,
-    genero VARCHAR(20) NOT NULL,
-    telefone VARCHAR(11) NOT NULL,
-    logradouro VARCHAR(100) NOT NULL, -- nome da rua, avenida e etc
-    numero_residencial VARCHAR(10) NOT NULL,
-    complemento VARCHAR(100) NULL,
-    cep CHAR(8) NOT NULL,
-    bairro VARCHAR(100) NOT NULL,
-    cidade VARCHAR(100) NOT NULL,
-    uf CHAR(2) NOT NULL,
-    status_prestador VARCHAR(20) NOT NULL, -- ATIVO, INATIVO, SUSPENSO
+    id                 INT IDENTITY,
+    usuario_id         INT,
+    regiao_id          INT,
+    nome               VARCHAR(100)  NOT NULL,
+    data_nascimento    DATE,
+    cpf                VARCHAR(11)   NOT NULL,
+    genero             VARCHAR(20)   NOT NULL,
+    telefone           VARCHAR(11)   NOT NULL,
+    logradouro         VARCHAR(100)  NOT NULL, -- nome da rua, avenida e etc
+    numero_residencial VARCHAR(10)   NOT NULL,
+    complemento        VARCHAR(100)  NULL,
+    cep                CHAR(8)       NOT NULL,
+    bairro             VARCHAR(100)  NOT NULL,
+    cidade             VARCHAR(100)  NOT NULL,
+    uf                 CHAR(2)       NOT NULL,
+    status_prestador   VARCHAR(20)   NOT NULL, -- ATIVO, INATIVO, SUSPENSO
     PRIMARY KEY(id),
     FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
     FOREIGN KEY (regiao_id) REFERENCES Regiao(id)
@@ -99,11 +99,11 @@ SELECT * FROM Prestador
 
 -- TABELA CONTATO
 CREATE TABLE Contato (
-    id INT IDENTITY,
-    prestador_id INT,
-    tipo_contato VARCHAR(50) NOT NULL,
-    link VARCHAR(255) NOT NULL,
-    status_contato VARCHAR(20) NOT NULL, -- ATIVO ou INATIVO
+    id             INT IDENTITY,
+    prestador_id   INT,
+    tipo_contato   VARCHAR(50)  NOT NULL,
+    link           VARCHAR(255) NOT NULL,
+    status_contato VARCHAR(20)  NOT NULL, -- ATIVO ou INATIVO
     PRIMARY KEY(id),
     FOREIGN KEY(prestador_id) REFERENCES Prestador(id)
 )
@@ -116,9 +116,9 @@ SELECT * FROM Contato
 
 -- TABELA CATEGORIA
 CREATE TABLE Categoria (
-    id INT IDENTITY,
-    nome VARCHAR(100) NOT NULL,
-    status_categoria BIT NOT NULL -- 1 = Ativo, 0 = Inativo
+    id               INT IDENTITY,
+    nome             VARCHAR(100) NOT NULL,
+    status_categoria BIT          NOT NULL -- 1 = Ativo, 0 = Inativo
     PRIMARY KEY(id)
 )
 GO
@@ -169,13 +169,13 @@ SELECT * FROM Categoria
 
 -- TABELA SERVICO
 CREATE TABLE Servico (
-    id INT IDENTITY,
-    categoria_id INT,
-    prestador_id INT,
-    nome VARCHAR(100) NOT NULL,
-    descricao VARCHAR(200) NOT NULL,
-    status_servico VARCHAR(20) NOT NULL, -- ATIVO OU INATIVO
-    foto VARBINARY(MAX) NULL,
+    id             INT IDENTITY,
+    categoria_id   INT,
+    prestador_id   INT,
+    nome           VARCHAR(100)   NOT NULL,
+    descricao      VARCHAR(200)   NOT NULL,
+    status_servico VARCHAR(20)    NOT NULL, -- ATIVO OU INATIVO
+    foto           VARBINARY(MAX) NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (categoria_id) REFERENCES Categoria(id),
     FOREIGN KEY (prestador_id) REFERENCES Prestador(id)
@@ -189,13 +189,13 @@ SELECT * FROM Servico
 
 -- TABELA FEEDBACK
 CREATE TABLE Feedback (
-    id INT IDENTITY,
-    usuario_id INT,
-    prestador_id INT,
-    titulo VARCHAR(200) NOT NULL,
-    descricao VARCHAR(200) NOT NULL,
-    tipo VARCHAR(50) NOT NULL, -- DENÚNCIA ou FEEDBACK
-    data_cadastro SMALLDATETIME NOT NULL,
+    id              INT IDENTITY,
+    usuario_id      INT,
+    prestador_id    INT,
+    titulo          VARCHAR(200)   NOT NULL,
+    descricao       VARCHAR(200)   NOT NULL,
+    tipo            VARCHAR(50)    NOT NULL, -- DENÚNCIA ou FEEDBACK
+    data_cadastro   SMALLDATETIME  NOT NULL,
     status_feedback VARCHAR(20), -- ATIVO OU INATIVO
     PRIMARY KEY (id),
     FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
