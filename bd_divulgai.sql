@@ -40,7 +40,38 @@ VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', NULL,
 
 GO
 
+/*
+CREATE TABLE Usuario (
+    id             INT IDENTITY PRIMARY KEY,
+    nome           VARCHAR(100)        NOT NULL,
+    email          VARCHAR(100) UNIQUE NOT NULL,
+    senha          VARCHAR(100)        NOT NULL,
+    nivel_acesso   VARCHAR(10)             NULL, -- ADMIN, PRESTADOR ou CLIENTE
+    ps_01          VARCHAR(100)        NOT NULL,
+    ps_02          VARCHAR(100)        NOT NULL,
+    foto           VARBINARY(MAX)          NULL,
+    data_cadastro  SMALLDATETIME       NOT NULL,
+    status_usuario BIT                 NOT NULL -- 1 = Ativo, 0 = Inativo
+)
+GO
+
+-- Ajustando inserts para status_usuario como BIT (0 ou 1)
+INSERT Usuario (nome, email, senha, nivel_acesso, ps_01, ps_02, foto, data_cadastro, status_usuario) 
+VALUES ('Fulano da Silva', 'fulano@email.com.br', 'MTIzNDU2Nzg=', 'ADMIN', 'Lilian', 'Vitinho', NULL, GETDATE(), 1)
+
+INSERT Usuario (nome, email, senha, nivel_acesso, ps_01, ps_02, foto, data_cadastro, status_usuario) 
+VALUES ('Beltrana de Sá', 'beltrana@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', 'Martha', 'Isadora', NULL, GETDATE(), 0)
+
+INSERT Usuario (nome, email, senha, nivel_acesso, ps_01, ps_02, foto, data_cadastro, status_usuario) 
+VALUES ('Sicrana de Oliveira', 'sicrana@email.com.br', 'MTIzNDU2Nzg=', 'PRESTADOR', 'Leonardo DiCaprio', 'Taylor Swift', NULL, GETDATE(), 1)
+
+INSERT Usuario (nome, email, senha, nivel_acesso, ps_01, ps_02, foto, data_cadastro, status_usuario) 
+VALUES ('Ordnael Zurc', 'ordnael@email.com.br', 'MTIzNDU2Nzg=', 'CLIENTE', 'Kanye West', 'Vladimir Putin', NULL, GETDATE(), 1)
+
+
 SELECT * FROM Usuario
+
+*/
 
 -- TABELA REGIAO
 
