@@ -188,6 +188,7 @@ CREATE TABLE Servico (
     id             INT IDENTITY,
     categoria_id   INT,
     prestador_id   INT,
+	contador       INT,
     nome           VARCHAR(100)   NOT NULL,
     descricao      VARCHAR(200)   NOT NULL,
     status_servico VARCHAR(20)    NOT NULL, -- ATIVO OU INATIVO
@@ -200,8 +201,8 @@ CREATE TABLE Servico (
 )
 GO
 
-INSERT Servico (categoria_id, prestador_id, nome, descricao, status_servico, foto) 
-VALUES (3, 1, 'Sicrana Bolos', 'O Sicrana Bolos vende bolos variados.', 'ATIVO', NULL)
+INSERT Servico (categoria_id, prestador_id, contador, nome, descricao, status_servico, foto) 
+VALUES (3, 1, 67, 'Sicrana Bolos', 'O Sicrana Bolos vende bolos variados.', 'ATIVO', NULL)
 
 SELECT * FROM Servico
 
@@ -211,11 +212,12 @@ CREATE TABLE Feedback (
     id              INT IDENTITY,
     usuario_id      INT,
     prestador_id    INT,
+	nota            INT            NOT NULL, -- 1 a 5 ESTRELAS
     titulo          VARCHAR(200)   NOT NULL,
     descricao       VARCHAR(200)   NOT NULL,
     tipo_feedback   VARCHAR(50)    NOT NULL, -- DENÚNCIA ou FEEDBACK
     data_cadastro   SMALLDATETIME  NOT NULL,
-    status_feedback VARCHAR(20), -- ATIVO OU INATIVO
+    status_feedback VARCHAR(20),             -- ATIVO OU INATIVO
 
 
     PRIMARY KEY (id),
@@ -223,8 +225,8 @@ CREATE TABLE Feedback (
     FOREIGN KEY (prestador_id) REFERENCES Prestador(id)
 )
 
-INSERT Feedback (usuario_id, prestador_id, titulo, descricao, tipo_feedback, data_cadastro, status_feedback)
-VALUES (4, 1, 'Um serviço excelente!', 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', 'FEEDBACK', GETDATE(), 'ATIVO')
+INSERT Feedback (usuario_id, prestador_id, nota, titulo, descricao, tipo_feedback, data_cadastro, status_feedback)
+VALUES (4, 1, 5, 'Um serviço excelente!', 'O serviço Sicrana Bolos é muito bom e acolhedor, parabéns.', 'FEEDBACK', GETDATE(), 'ATIVO')
 
 SELECT * FROM Feedback
 
