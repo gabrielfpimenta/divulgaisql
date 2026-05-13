@@ -188,7 +188,7 @@ CREATE TABLE Servico (
     id             INT IDENTITY,
     categoria_id   INT,
     prestador_id   INT,
-	contador       INT,
+	contador       INT            NOT NULL,
     nome           VARCHAR(100)   NOT NULL,
     descricao      VARCHAR(200)   NOT NULL,
     status_servico VARCHAR(20)    NOT NULL, -- ATIVO OU INATIVO
